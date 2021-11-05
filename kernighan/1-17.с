@@ -1,0 +1,25 @@
+#include <stdio.h>
+#define MAXLINE 1000
+ //печать строк длиннее 80 символов
+ int count(char line[], int MAX);
+
+int main(){
+    int len = 0;
+    char input[MAXLINE];
+    while ( (len = count(input, MAXLINE)) > 0){
+        if (len > 80){
+          printf("\n>>This string is longer than 80 characters, length - %d :\n%s\n", len, input);
+        }
+    }
+    return 0;
+}
+
+int count(char inp[], int lim){
+    int i, c;
+    for( i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; i++){
+       inp[i] = c;
+    }
+    inp[i] = '\0';
+    return i;
+
+}
